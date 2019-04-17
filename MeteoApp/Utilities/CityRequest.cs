@@ -1,0 +1,45 @@
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Text;
+using System.ComponentModel;
+using Xamarin.Forms;
+using System.Net.Http;
+
+namespace MeteoApp.Utilities
+{
+    public class CityRequest
+    {
+        
+        public CityRequest()
+        {
+            Request = "https://api.opencagedata.com/geocode/v1/json?q=";
+            Key = "&key=ea341c0e70344a13bc96f6c28727735a";
+        }
+
+        public async Task<Entry> DoRequestAsync(string cityName)
+        {
+            var httpClient = new HttpClient();
+            string uri = Request + cityName + Key;
+            var contentResponse = await httpClient.GetStringAsync(uri);
+            var geometry = (string)JObject.Parse(contentResponse)["results"][0]["geometry"];
+            var name = (string)JObject.Parse(contentResponse)["results"][0]["formatted"];
+            var lat = (double)JObject.Parse(geometry)["lat"];
+            var lon = (double)JObject.Parse(geometry)["lng"];
+            Entry entry = new Entry
+            {
+                Lon = lon,
+                Lat = lat,
+                Name = name
+            };
+
+
+            return entry;
+        }
+
+        public string Key { get; set; }
+        public string Request { get; set; }
+    }
+}

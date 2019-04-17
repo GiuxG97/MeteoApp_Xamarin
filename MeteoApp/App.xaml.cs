@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MeteoApp.Utilities;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,6 +8,18 @@ namespace MeteoApp
 {
     public partial class App : Application
     {
+        private static CityRequest cityRequest;
+
+        public static CityRequest CityRequest
+        {
+            get
+            {
+                if (cityRequest == null)
+                    return new CityRequest();
+                return cityRequest;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
