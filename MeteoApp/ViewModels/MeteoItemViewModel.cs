@@ -4,9 +4,9 @@ namespace MeteoApp
 {
     public class MeteoItemViewModel : BaseViewModel
     {
-        Entry _entry;
+        Location _entry;
 
-        public Entry Entry
+        public Location Entry
         {
             get { return _entry;  }
             set
@@ -16,7 +16,7 @@ namespace MeteoApp
             }
         }
 
-        public MeteoItemViewModel(Entry entry)
+        public MeteoItemViewModel(Location entry)
         {
             Entry = entry;
         }
