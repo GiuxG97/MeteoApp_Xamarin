@@ -9,6 +9,17 @@ namespace MeteoApp
     public partial class App : Application
     {
         private static CityRequest cityRequest;
+        private static WeatherRequest weatherRequest;
+
+        public static WeatherRequest WeatherRequest
+        {
+            get
+            {
+                if (weatherRequest == null)
+                    return new WeatherRequest();
+                return weatherRequest;
+            }
+        }
 
         public static CityRequest CityRequest
         {

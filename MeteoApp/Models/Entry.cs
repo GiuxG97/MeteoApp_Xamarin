@@ -9,6 +9,7 @@ namespace MeteoApp
         public string Name { get; set; }
         public double Lat { get; set; }
         public double Lon { get; set; }
+        public double Temperature { get; set; }
         public double MinTemperature { get; set; }
         public double MaxTemperature { get; set; }
         public string Image { get; set; }

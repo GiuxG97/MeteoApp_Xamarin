@@ -38,7 +38,15 @@ namespace MeteoApp
             if (pResult.Ok && !string.IsNullOrWhiteSpace(pResult.Text))
             {
                 var newCity = await App.CityRequest.DoRequestAsync(pResult.Text);
-                
+
+                //TODO: non va questa funzione e non si sa il perchè, da eccezione perchè esce ignorando il parsing (provare a debuggare per capire)
+                var weather = await App.WeatherRequest.DoRequestAsync(new Entry
+                {
+                    Name = "como",
+                    Lat = 45.81,
+                    Lon = 9.09
+                });
+
                 MeteoListViewModel.Entries.Add(newCity);
             }
         }
@@ -54,6 +62,7 @@ namespace MeteoApp
         {
             if (e.SelectedItem != null)
             {
+                //TODO: mettere qui il risultato della richiesta del weather e passarlo nel costruttore sotto (non va e non so il perchè)
                 Navigation.PushAsync(new MeteoItemPage()
                 {
                     BindingContext = new MeteoItemViewModel(e.SelectedItem as Entry)

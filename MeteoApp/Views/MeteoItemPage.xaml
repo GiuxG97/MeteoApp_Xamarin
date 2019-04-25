@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MeteoApp.MeteoItemPage">
     <ContentPage.Content>
-        <RelativeLayout x:Name="container">
-            <Label Text="{Binding Entry.Name}" RelativeLayout.XConstraint="{ConstraintExpression 
-                        Type=RelativeToParent,
-                        Property=Width, 
-                        Factor=0.5,
-                        Constant=-25}"
-                   RelativeLayout.YConstraint=
-                "{ConstraintExpression 
-                        Type=RelativeToParent,
-                        Property=Height,
-                        Factor=0.5,
-                        Constant=-25}"
-            ></Label>
-        </RelativeLayout>
+        <StackLayout x:Name="MainLayout" Spacing="30">
+
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 50, 0, 100"
+                    Android="0, 10, 0, 100" />
+            </StackLayout.Margin>
+
+            <Label Text="{Binding Entry.Name}"
+                FontSize="55"
+                HorizontalOptions="Center" 
+                VerticalOptions="Start" />
+
+
+            <Image x:Name="MainImage" 
+                Source="{Binding Entry.Image}"
+                VerticalOptions="FillAndExpand" />
+
+            <StackLayout Spacing="0" 
+                Orientation="Horizontal" 
+                VerticalOptions="Start">
+                <Label Text="{Binding Entry.MinTemperature}" 
+                       BackgroundColor="Green"
+                       FontSize="40"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"/>
+                <Label Text="{Binding Entry.MaxTemperature}"
+                       BackgroundColor="Red"
+                       FontSize="40" 
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
