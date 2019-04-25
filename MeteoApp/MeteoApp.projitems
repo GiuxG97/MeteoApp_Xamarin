@@ -22,6 +22,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\CityRequest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\WeatherRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\MeteoListPage.xaml.cs">
       <DependentUpon>MeteoListPage.xaml</DependentUpon>
     </Compile>

@@ -22,19 +22,19 @@ namespace MeteoApp.Utilities
         public async Task<Entry> DoRequestAsync(string cityName)
         {
             var httpClient = new HttpClient();
-            string uri = Request + cityName + Key;
-            var contentResponse = await httpClient.GetStringAsync(uri);
-            var geometry = (string)JObject.Parse(contentResponse)["results"][0]["geometry"];
+            var contentResponse = await httpClient.GetStringAsync((Request + cityName + Key));
+            
+            var geometry = JObject.Parse(contentResponse)["results"][0]["geometry"];
             var name = (string)JObject.Parse(contentResponse)["results"][0]["formatted"];
-            var lat = (double)JObject.Parse(geometry)["lat"];
-            var lon = (double)JObject.Parse(geometry)["lng"];
+            var lat = (double)geometry["lat"];
+            var lon = (double)geometry["lng"];
+            
             Entry entry = new Entry
             {
                 Lon = lon,
                 Lat = lat,
                 Name = name
             };
-
 
             return entry;
         }

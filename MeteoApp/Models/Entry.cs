@@ -12,5 +12,6 @@ namespace MeteoApp
         public double MinTemperature { get; set; }
         public double MaxTemperature { get; set; }
         public string Image { get; set; }
+        public string Condition { get; set; }
     }
 }

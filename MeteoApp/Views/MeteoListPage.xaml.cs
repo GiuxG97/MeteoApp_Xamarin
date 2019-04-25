@@ -37,9 +37,9 @@ namespace MeteoApp
 
             if (pResult.Ok && !string.IsNullOrWhiteSpace(pResult.Text))
             {
-                var newCity = App.CityRequest.DoRequestAsync(pResult.Text);
+                var newCity = await App.CityRequest.DoRequestAsync(pResult.Text);
                 
-                MeteoListViewModel.Entries.Add(newCity.Result);
+                MeteoListViewModel.Entries.Add(newCity);
             }
         }
 
