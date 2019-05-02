@@ -1,4 +1,5 @@
-﻿using MeteoApp.Utilities;
+﻿using MeteoApp.Models;
+using MeteoApp.Utilities;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -9,6 +10,19 @@ namespace MeteoApp
     public partial class App : Application
     {
         private static CityRequest cityRequest;
+        private static WeatherRequest weatherRequest;
+        static DatabaseHelper database;
+
+        // singleton pattern
+        public static DatabaseHelper Database
+        {
+            get
+            {
+                if (database == null) // se l'istanza è nulla, la creo
+                    database = new DatabaseHelper();
+                return database; // ritorno l'istanza
+            }
+        }
 
         public static CityRequest CityRequest
         {
@@ -17,6 +31,16 @@ namespace MeteoApp
                 if (cityRequest == null)
                     return new CityRequest();
                 return cityRequest;
+            }
+        }
+
+        public static WeatherRequest WeatherRequest
+        {
+            get
+            {
+                if (weatherRequest == null)
+                    return new WeatherRequest();
+                return weatherRequest;
             }
         }
 

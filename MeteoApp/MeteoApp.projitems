@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DatabaseHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Entry.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\CityRequest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\WeatherRequest.cs" />
@@ -34,7 +35,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MeteoItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)ViewModels\" />
   </ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace MeteoApp
@@ -21,7 +22,7 @@ namespace MeteoApp
         {
             Entries = new ObservableCollection<Entry>();
 
-            for (var i = 0; i < 10; i++)
+            /*for (var i = 0; i < 10; i++)
             {
                 var e = new Entry
                 {
@@ -32,6 +33,13 @@ namespace MeteoApp
                 };
 
                 Entries.Add(e);
+            }*/
+
+            // read from database
+            List<Entry> locations = App.Database.GetLocationAsync().Result;
+            foreach (var location in locations)
+            {
+                Entries.Add(location);
             }
         }
     }

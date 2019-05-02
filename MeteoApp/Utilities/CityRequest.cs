@@ -7,6 +7,7 @@ using System.Text;
 using System.ComponentModel;
 using Xamarin.Forms;
 using System.Net.Http;
+using MeteoApp.Models;
 
 namespace MeteoApp.Utilities
 {
@@ -35,6 +36,9 @@ namespace MeteoApp.Utilities
                 Lat = lat,
                 Name = name
             };
+
+            // save it in database
+            await App.Database.SaveLocationAsync(entry);
 
             return entry;
         }

@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MeteoApp.MeteoItemPage">
     <ContentPage.Content>
         <RelativeLayout x:Name="container">
-            <Label Text="{Binding Entry.Name}" RelativeLayout.XConstraint="{ConstraintExpression 
+            <StackLayout Padding="5,10">
+                <Label Text="{Binding Entry.Lon, StringFormat='Lat: {0:F7}'}"></Label>
+                <Label Text="{Binding Entry.Lat, StringFormat='Lon: {0:F7}'}"></Label>
+                <Label x:Name="nameLocation" Text="{Binding Entry.Name, StringFormat='Name: {0:S0}'}" RelativeLayout.XConstraint="{ConstraintExpression 
                         Type=RelativeToParent,
                         Property=Width, 
                         Factor=0.5,
@@ -13,7 +16,11 @@
                         Property=Height,
                         Factor=0.5,
                         Constant=-25}"
-            ></Label>
+                ></Label>
+                <Label Text="{Binding Entry.Condition, StringFormat='Condizione: {0:S}'}"></Label>
+                <Label Text="{Binding Entry.MinTemperature, StringFormat='Temperatura min: {0:F2}° Celsius'}"></Label>
+                <Label Text="{Binding Entry.MaxTemperature, StringFormat='Temperatura max: {0:F2}° Celsius'}"></Label>
+            </StackLayout>
         </RelativeLayout>
     </ContentPage.Content>
 </ContentPage>
