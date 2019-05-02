@@ -43,6 +43,29 @@ namespace MeteoApp.Utilities
             return entry;
         }
 
+        public async Task<Entry> DoRequestLatLonAsync(double latitude, double longitude)
+        {
+            var httpClient = new HttpClient();
+            var latlon = latitude+"+"+longitude;
+            System.Diagnostics.Debug.WriteLine("URI gps: " + (Request + latlon + Key));
+            var contentResponse = await httpClient.GetStringAsync((Request + latlon + Key));
+
+            var geometry = JObject.Parse(contentResponse)["results"][0]["geometry"];
+            var name = (string)JObject.Parse(contentResponse)["results"][0]["formatted"];
+
+            Entry entry = new Entry
+            {
+                Lon = longitude,
+                Lat = latitude,
+                Name = name
+            };
+
+            // save it in database
+            // await App.Database.SaveLocationAsync(entry);
+
+            return entry;
+        }
+
         public string Key { get; set; }
         public string Request { get; set; }
     }

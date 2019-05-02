@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Geolocator;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -35,12 +36,26 @@ namespace MeteoApp
                 Entries.Add(e);
             }*/
 
+            //Entries.Add(GpsAsync().Result);
+            GpsAsync();
+
             // read from database
             List<Entry> locations = App.Database.GetLocationAsync().Result;
             foreach (var location in locations)
             {
                 Entries.Add(location);
             }
+        }
+
+        public async System.Threading.Tasks.Task GpsAsync()
+        {
+            // geolocator
+            var locator = CrossGeolocator.Current;
+            Plugin.Geolocator.Abstractions.Position position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+
+            Entry gps = await App.CityRequest.DoRequestLatLonAsync(position.Latitude, position.Longitude);
+
+            Entries.Insert(0, gps);
         }
     }
 }

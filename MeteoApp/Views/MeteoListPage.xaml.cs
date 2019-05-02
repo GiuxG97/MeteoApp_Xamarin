@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using MeteoApp.Utilities;
 using Acr.UserDialogs;
+using Plugin.Geolocator;
 
 namespace MeteoApp
 {
@@ -20,9 +21,10 @@ namespace MeteoApp
             BindingContext = MeteoListViewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            
         }
 
         private async void ShowPrompt()
