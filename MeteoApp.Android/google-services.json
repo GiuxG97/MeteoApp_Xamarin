@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "333715197372",
+    "firebase_url": "https://meteoappxamarin-64b05.firebaseio.com",
+    "project_id": "meteoappxamarin-64b05",
+    "storage_bucket": "meteoappxamarin-64b05.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:333715197372:android:0d82ffda2b5c9f7f",
+        "android_client_info": {
+          "package_name": "ch.supsi.dti.isin.galliva.meteoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "333715197372-3m4qn5k3umbhpq7sghkmccc2dvoj504k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1ySC3qtPzUFqvXQ3r8OTkrX0uglCULC4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "333715197372-3m4qn5k3umbhpq7sghkmccc2dvoj504k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

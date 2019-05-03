@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
+using Plugin.FirebasePushNotification;
 
 namespace MeteoApp.Droid
 {
@@ -17,6 +18,9 @@ namespace MeteoApp.Droid
         {
             // geolocator
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+
+            // firebase
+            FirebasePushNotificationManager.ProcessIntent(this, Intent);
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
