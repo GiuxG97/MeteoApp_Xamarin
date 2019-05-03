@@ -37,7 +37,7 @@ namespace MeteoApp.Utilities
             var urlImage = "http://openweathermap.org/img/w/" + iconName + ".png";
             //var image = await httpClient.GetByteArrayAsync(urlImage);
 
-            ImageSource image = ImageSource.FromUri(new Uri(urlImage));
+            //ImageSource image = ImageSource.FromUri(new Uri(urlImage));
 
             Entry entry = new Entry
             {
@@ -47,7 +47,7 @@ namespace MeteoApp.Utilities
                 Condition = condition,
                 MaxTemperature = max,
                 MinTemperature = min,
-                Image = image
+                Image = urlImage
             };
             
             return entry;

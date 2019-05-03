@@ -19,17 +19,11 @@ namespace MeteoApp
             await populateAsync(((MeteoItemViewModel)BindingContext).Entry);
         }
 
-        /*protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            System.Diagnostics.Debug.WriteLine("LOC " + nameLocation.Text);
-            populateAsync(nameLocation.Text);
-        }*/
-
         private async System.Threading.Tasks.Task populateAsync(Entry entryBC)
         {
             Entry e=await App.WeatherRequest.DoRequestAsync(entryBC);
             System.Diagnostics.Debug.WriteLine(e.Condition);
+            MainImage.Source=ImageSource.FromUri(new Uri(e.Image));
             BindingContext = new MeteoItemViewModel(e as Entry);
         }
     }

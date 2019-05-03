@@ -17,7 +17,14 @@ namespace MeteoApp.Models
             var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                 "Locations.db3");
             database = new SQLiteAsyncConnection(dbPath);
-            database.CreateTableAsync<Entry>().Wait();
+            try
+            {
+                database.CreateTableAsync<Entry>().Wait();
+            }
+            catch (AggregateException a)
+            {
+                System.Diagnostics.Debug.WriteLine(a);
+            }
         }
 
         public Task<int> SaveLocationAsync(Entry location)

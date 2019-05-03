@@ -12,7 +12,7 @@ namespace MeteoApp
         public double Lon { get; set; }
         public double MinTemperature { get; set; }
         public double MaxTemperature { get; set; }
-        public ImageSource Image { get; set; }
+        public string Image { get; set; }
         public string Condition { get; set; }
     }
 }
