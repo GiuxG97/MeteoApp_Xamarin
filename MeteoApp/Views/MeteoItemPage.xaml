@@ -1,26 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MeteoApp.MeteoItemPage">
     <ContentPage.Content>
-        <RelativeLayout x:Name="container">
-            <StackLayout Padding="5,10">
-                <Label Text="{Binding Entry.Lon, StringFormat='Lat: {0:F7}'}"></Label>
-                <Label Text="{Binding Entry.Lat, StringFormat='Lon: {0:F7}'}"></Label>
-                <Label x:Name="nameLocation" Text="{Binding Entry.Name, StringFormat='Name: {0:S0}'}" RelativeLayout.XConstraint="{ConstraintExpression 
-                        Type=RelativeToParent,
-                        Property=Width, 
-                        Factor=0.5,
-                        Constant=-25}"
-                   RelativeLayout.YConstraint=
-                "{ConstraintExpression 
-                        Type=RelativeToParent,
-                        Property=Height,
-                        Factor=0.5,
-                        Constant=-25}"
-                ></Label>
-                <Label Text="{Binding Entry.Condition, StringFormat='Condizione: {0:S}'}"></Label>
-                <Label Text="{Binding Entry.MinTemperature, StringFormat='Temperatura min: {0:F2}° Celsius'}"></Label>
-                <Label Text="{Binding Entry.MaxTemperature, StringFormat='Temperatura max: {0:F2}° Celsius'}"></Label>
+        <StackLayout x:Name="MainLayout" Spacing="30">
+
+            <StackLayout.Margin>
+                <OnPlatform x:TypeArguments="Thickness"
+                    iOS="0, 50, 0, 100"
+                    Android="0, 10, 0, 100" />
+            </StackLayout.Margin>
+
+            <Label x:Name="nameLocation" Text="{Binding Entry.Name}"
+                FontSize="30"
+                HorizontalOptions="Center" 
+                VerticalOptions="Start" />
+
+
+            <Image x:Name="MainImage" 
+                Source="{Binding Entry.Image}"
+                VerticalOptions="FillAndExpand" />
+
+            <StackLayout Spacing="0" 
+                Orientation="Horizontal" 
+                VerticalOptions="Start">
+                <Label Text="{Binding Entry.MinTemperature}" 
+                       BackgroundColor="Green"
+                       FontSize="40"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"/>
+                <Label Text="{Binding Entry.MaxTemperature}"
+                       BackgroundColor="Red"
+                       FontSize="40" 
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-        </RelativeLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

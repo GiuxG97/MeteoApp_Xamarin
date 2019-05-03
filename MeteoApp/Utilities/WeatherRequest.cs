@@ -22,20 +22,22 @@ namespace MeteoApp.Utilities
         public async Task<Entry> DoRequestAsync(Entry entryParam)
         {
             var httpClient = new HttpClient();
-            //TODO: prendere la città dal db attraverso cityName
-            /*var lat = 45.81082;
-            var lon = 9.086044;*/
-            var uri = Request + "lat=" + entryParam.Lat + "&lon=" + entryParam.Lon + Key; 
-            //var uri = Request + "q=" + cityName + Key;
+            var uri = Request + "lat=" + entryParam.Lat + "&lon=" + entryParam.Lon + Key;
             System.Diagnostics.Debug.WriteLine("URI: "+uri);
 
             var contentResponse = await httpClient.GetStringAsync(uri);
-            //var weather = JObject.Parse(contentResponse)["weather"][0];  
             
             var condition = (string)JObject.Parse(contentResponse)["weather"][0]["description"];
-            //var temp = JObject.Parse(contentResponse)["main"]["temp"];
             var max = (double)JObject.Parse(contentResponse)["main"]["temp_max"];
             var min = (double)JObject.Parse(contentResponse)["main"]["temp_min"];
+
+            string iconName = (string)JObject.Parse(contentResponse)["weather"][0]["icon"];
+
+            // image request
+            var urlImage = "http://openweathermap.org/img/w/" + iconName + ".png";
+            //var image = await httpClient.GetByteArrayAsync(urlImage);
+
+            ImageSource image = ImageSource.FromUri(new Uri(urlImage));
 
             Entry entry = new Entry
             {
@@ -44,10 +46,10 @@ namespace MeteoApp.Utilities
                 Lon = entryParam.Lon,
                 Condition = condition,
                 MaxTemperature = max,
-                MinTemperature = min
+                MinTemperature = min,
+                Image = image
             };
-
-
+            
             return entry;
 
         }
